@@ -1,0 +1,128 @@
+/* body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(180deg, #eaf9fd, #c7edf4);
+  color: #2b5f8a;
+}
+
+.app {
+  max-width: 1150px;
+  margin: auto;
+  padding: 24px;
+} 
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  gap: 24px;
+  margin-top: 24px;
+}
+
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 2.2fr 1.3fr; 
+  gap: 28px;
+  margin-top: 28px;
+}
+
+
+.dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+ */
+
+ /* ===== GLOBAL LOCK (CRITICAL) ===== */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 🚫 disables page scroll */
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(180deg, #eaf9fd, #c7edf4);
+  color: #2b5f8a;
+}
+
+/* ===== APP CONTAINER ===== */
+.app {
+  height: 100vh;                 /* 👈 lock to viewport */
+  max-width: 1150px;
+  margin: auto;
+  padding: 16px;                 /* reduced to avoid overflow */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== DASHBOARD GRID ===== */
+.dashboard {
+  flex: 1;                       /* 👈 fills remaining space */
+  display: grid;
+  grid-template-columns: 2.2fr 1.3fr;
+  gap: 20px;
+  min-height: 0;                 /* ⭐ VERY IMPORTANT */
+}
+
+/* ===== LEFT PANEL ===== */
+.left-panel,
+.dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;                 /* ⭐ prevents overflow */
+}
+
+/* ===== RIGHT PANEL ===== */
+.right-panel,
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;                 /* ⭐ prevents overflow */
+}
+
+/* ===== RESPONSIVE (MOBILE) ===== */
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}

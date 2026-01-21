@@ -1,0 +1,253 @@
+/* .current-card {
+  border-radius: 26px;
+  padding: 28px 34px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  margin-bottom: 28px;
+  width: 90%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #7aa6c2;
+  margin-bottom: 18px;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.left h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #2b5f8a;
+}
+
+.temp-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0 6px;
+}
+
+.weather-icon {
+  font-size: 46px;
+}
+
+.temp {
+  font-size: 78px;
+  font-weight: 500;
+  color: #3b6fa5;
+}
+
+.desc {
+  color: #7a9bb8;
+  font-weight: 500;
+}
+
+
+.moon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: 18px;
+  background: #f4f9fd;
+  min-width: 150px;
+  text-align: center;
+}
+
+.moon-icon {
+  font-size: 48px;
+  margin-bottom: 6px;
+}
+
+.moon-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2b5f8a;
+}
+
+.moon-sub {
+  font-size: 12px;
+  color: #7aa6c2;
+}
+
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  font-size: 14px;
+  color: #4f6d85;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat span {
+  flex: 1;
+}
+
+.unit-toggle {
+  position: relative;
+  width: 76px;
+  height: 28px;
+  background: #eaf6fb;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2b5f8a;
+}
+
+
+.unit-toggle span {
+  z-index: 2;
+}
+
+
+.toggle-slider {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 46px;
+  height: 26px;
+  background: #aebecc;
+  border-radius: 16px;
+  transition: transform 0.25s ease;
+}
+
+
+.unit-toggle.right .toggle-slider {
+  transform: translateX(49px);
+} */
+
+.weather-dashboard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 30px;
+  color: white;
+  max-width: 900px;
+  margin: 20px auto;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header & Toggle */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.location-info h1 { margin: 0; font-size: 1.8rem; }
+.location-info p { margin: 0; opacity: 0.6; font-size: 0.9rem; }
+
+.unit-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.switch-track {
+  width: 40px;
+  height: 20px;
+  background: #444;
+  border-radius: 10px;
+  position: relative;
+}
+
+.switch-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.f-active .switch-thumb { transform: translateX(20px); }
+.active { color: #00d2ff; font-weight: bold; }
+
+/* Grid Layout */
+.main-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Hero Card */
+.hero-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.hero-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.hero-icon { font-size: 4rem; }
+.hero-temp { font-size: 4.5rem; font-weight: 800; }
+.hero-desc { font-size: 1.2rem; text-transform: capitalize; margin: 10px 0 5px; }
+.hero-feels { opacity: 0.6; font-size: 0.9rem; }
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat-box, .moon-stat {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-icon, .moon-mini-icon { font-size: 1.5rem; }
+.label { font-size: 0.75rem; opacity: 0.6; margin: 0; }
+.value { font-size: 1rem; font-weight: 600; margin: 0; }
+
+/* Forecast Section */
+.forecast-container h3 {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-stats-grid { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}

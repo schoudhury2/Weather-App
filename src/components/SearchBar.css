@@ -1,0 +1,22 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 30px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 26px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  margin: 0 12px;
+}
+
+.icon {
+  font-size: 18px;
+  opacity: 0.7;
+}

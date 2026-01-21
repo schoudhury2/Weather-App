@@ -1,0 +1,20 @@
+.header {
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0 0 16px 0;
+  color: #2b5f8a;
+  font-size: 28px;
+}
+
+.header input {
+  width: 96%;
+  padding: 14px 18px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  outline: none;
+  background: none;
+}

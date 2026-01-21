@@ -1,0 +1,17 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.topbar h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.top-icons span {
+  font-size: 20px;
+  margin-left: 16px;
+  cursor: pointer;
+}
