@@ -11,7 +11,6 @@ A modern **Weather Application** built with **React** and **Vite** that provides
 * 🌤️ Current weather details (temperature, condition, wind, humidity, etc.)
 * ⏰ Hourly forecast view
 * 📅 7-day weather forecast
-* 📊 Weather data visualization using charts
 * 🌙 Moon phase calculation
 * ⚡ Fast development and build with Vite
 
