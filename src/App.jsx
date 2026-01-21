@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
 import Loader from "./components/Loader";
-import { fetchWeather } from "./api/weatherApi";
+import { fetchWeather } from "./api/weatherapi";
 
 async function fetchWeeklyForecast(lat, lon) {
   const res = await fetch(
