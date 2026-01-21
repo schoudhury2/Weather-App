@@ -108,6 +108,7 @@ Used for fetching daily weather forecasts including:
 ## 📸 Screenshots
 
 *Add screenshots here if needed*
+<img width="1915" height="871" alt="image" src="https://github.com/user-attachments/assets/abf9c951-4da1-4504-b6c2-13169d4d0159" />
 
 ---
 
