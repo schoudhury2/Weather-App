@@ -1,18 +1,8 @@
-import { useState } from "react";
-import "./Header.css";
-
-export default function Header({ onSearch }) {
-  const [city, setCity] = useState("Paris");
-
+export default function Header({ city, country }) {
   return (
-    <div className="header">
-      <h1>Weather Web</h1>
-      <input
-        value={city}
-        placeholder="Search city..."
-        onChange={(e) => setCity(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && onSearch(city)}
-      />
-    </div>
+    <header className="header">
+      <h1>{city}, {country}</h1>
+      <p>{new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</p>
+    </header>
   );
 }

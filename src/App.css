@@ -1,128 +1,307 @@
-/* body {
+/* 1. THEME & CORE DESIGN SYSTEM */
+:root {
+  /* Soft blue gradient background for a modern feel */
+  --bg-gradient: linear-gradient(135deg, #e0f2f7 0%, #d1e9f0 100%);
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(12px);
+  
+  /* Typography & Palette */
+  --text-primary: #1e3a5f;    /* Deep navy for high contrast */
+  --text-secondary: #7a92a5;  /* Muted slate for metadata */
+  --accent: #3b82f6;
+  --white: #ffffff;
+  
+  /* Elevation */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 30px rgba(31, 38, 135, 0.07);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: linear-gradient(180deg, #eaf9fd, #c7edf4);
-  color: #2b5f8a;
+  padding: 0;
 }
 
-.app {
-  max-width: 1150px;
-  margin: auto;
-  padding: 24px;
-} 
-
-
-.dashboard {
-  display: grid;
-  grid-template-columns: 2fr 1fr; 
-  gap: 24px;
-  margin-top: 24px;
-}
-
-
-.left-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-
-.right-panel {
-  display: flex;
-  flex-direction: column;
-}
-
-
-@media (max-width: 900px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-
-.dashboard {
-  display: grid;
-  grid-template-columns: 2.2fr 1.3fr; 
-  gap: 28px;
-  margin-top: 28px;
-}
-
-
-.dashboard-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-
-.dashboard-right {
-  display: flex;
-  flex-direction: column;
-}
-
-
-@media (max-width: 1024px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-}
- */
-
- /* ===== GLOBAL LOCK (CRITICAL) ===== */
-html,
 body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* 🚫 disables page scroll */
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem;
+  line-height: 1.5;
 }
 
-/* ===== BASE STYLES ===== */
-body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: linear-gradient(180deg, #eaf9fd, #c7edf4);
-  color: #2b5f8a;
+.app-container {
+  max-width: 1200px; /* Expanded for a dashboard feel */
+  margin: 0 auto;
 }
 
-/* ===== APP CONTAINER ===== */
-.app {
-  height: 100vh;                 /* 👈 lock to viewport */
-  max-width: 1150px;
-  margin: auto;
-  padding: 16px;                 /* reduced to avoid overflow */
+/* 2. SEARCH & HEADER */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+.search-bar {
   display: flex;
-  flex-direction: column;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 6px 12px;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  border: 1px solid transparent;
 }
 
-/* ===== DASHBOARD GRID ===== */
-.dashboard {
-  flex: 1;                       /* 👈 fills remaining space */
+.search-bar:focus-within {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.search-bar button {
+  padding: 0 20px;
+  background: var(--accent);
+  border: none;
+  color: var(--white);
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.search-bar button:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* 3. SEARCH SUGGESTIONS */
+.suggestions-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 16px;
+  list-style: none;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.suggestions-list li {
+  padding: 14px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestions-list li:hover {
+  background: rgba(59, 130, 246, 0.1);
+  padding-left: 25px;
+}
+
+/* 4. CURRENT WEATHER CARD (HERO) */
+.current-card {
   display: grid;
-  grid-template-columns: 2.2fr 1.3fr;
-  gap: 20px;
-  min-height: 0;                 /* ⭐ VERY IMPORTANT */
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 3rem;
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 3rem;
 }
 
-/* ===== LEFT PANEL ===== */
-.left-panel,
-.dashboard-left {
+.main-temp h2 {
+  font-size: 6rem; /* High impact */
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+.main-temp p {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.moon-middle-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.moon-hero-icon {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.moon-phase-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* 5. HOURLY FORECAST */
+.hourly-row {
+  display: flex;
   gap: 16px;
-  min-height: 0;                 /* ⭐ prevents overflow */
+  overflow-x: auto;
+  padding: 10px 0 20px 0;
+  scrollbar-width: none; /* Hide scrollbar for clean look */
 }
 
-/* ===== RIGHT PANEL ===== */
-.right-panel,
-.dashboard-right {
+.hourly-row::-webkit-scrollbar { display: none; }
+
+.hour-card {
+  background: var(--white);
+  padding: 24px 20px;
+  border-radius: 24px;
+  text-align: center;
+  min-width: 100px;
+  flex: 1;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.hour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hour-card span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.hour-card strong {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* 6. DAILY LIST (WEEK IN REVIEW) */
+.daily-list {
+  background: transparent;
+  margin-top: 2rem;
+}
+
+.daily-item {
   display: flex;
-  flex-direction: column;
-  min-height: 0;                 /* ⭐ prevents overflow */
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
 }
 
-/* ===== RESPONSIVE (MOBILE) ===== */
-@media (max-width: 900px) {
-  .dashboard {
+.daily-item:hover {
+  padding-left: 10px;
+  color: var(--accent);
+}
+
+/* 7. RESPONSIVE ADJUSTMENTS */
+@media (max-width: 992px) {
+  .current-card {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-temp h2 { font-size: 4.5rem; }
+  body { padding: 1.5rem 1rem; }
+}
+
+
+/* Container for the whole weather card area */
+.current-card-container {
+  margin-bottom: 2rem;
+}
+
+/* Flex layout for the Temp and Moon row */
+.current-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 0 10px;
+}
+
+/* THE GRID SYSTEM FOR BOXES */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  gap: 15px;
+}
+
+/* INDIVIDUAL BOX STYLING */
+.stat-box {
+  background: rgba(255, 255, 255, 0.35); /* Frosted glass effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+}
+
+.stat-content small {
+  display: block;
+  color: #7a92a5; /* Muted label text */
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.stat-content strong {
+  font-size: 1rem;
+  color: #1e3a5f; /* Deep Navy value text */
+  font-weight: 700;
+}
+
+/* RESPONSIVE: Stack boxes on small screens */
+@media (max-width: 600px) {
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 }
